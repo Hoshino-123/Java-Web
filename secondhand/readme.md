@@ -1,4 +1,4 @@
-# 🛍️ 二手物品交易平台（Secondhand Marketplace）
+# 🛍️ 二手物品交易平台
 
 一个基于 **Java Servlet + JSP + MySQL** 的轻量级二手物品交易网站，支持用户注册登录、发布物品、浏览全站商品、管理个人物品及删除功能。
 
@@ -51,9 +51,10 @@ CREATE TABLE items (
 ```
 ### 2. 配置数据库连接
 - 修改 src/main/java/com/servlet/secondhand/dao;
-``` private static final String URL = "jdbc:mysql://localhost:3306/secondhand?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
-    private static final String USER = "username"; //  改为你自己的数据库用户名
-    private static final String PASSWORD = "password"; // 改为你自己的密码
+```
+private static final String URL = "jdbc:mysql://localhost:3306/secondhand?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+private static final String USER = "username"; //  改为你自己的数据库用户名
+private static final String PASSWORD = "password"; // 改为你自己的密码
 ```
 
 ### 3. 构建并部署
@@ -65,5 +66,6 @@ CREATE TABLE items (
 
 
 ---
+
 
 

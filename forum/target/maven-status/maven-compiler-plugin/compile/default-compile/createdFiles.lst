@@ -1,0 +1,10 @@
+com\servlet\forum\ForumApplication.class
+com\servlet\forum\controller\HomeController.class
+com\servlet\forum\controller\AuthController.class
+com\servlet\forum\service\AuthService.class
+com\servlet\forum\model\Post.class
+com\servlet\forum\controller\CaptchaController.class
+com\servlet\forum\controller\PostController.class
+com\servlet\forum\model\Reply.class
+com\servlet\forum\service\PostService.class
+com\servlet\forum\model\User.class

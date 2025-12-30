@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${post.title}">帖子详情</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h2>
+        <a th:href="@{/home}">返回首页</a>
+    </h2>
+
+    <h3 th:text="${post.title}">标题</h3>
+    <div class="post-content">
+        <p>作者：<span th:text="${post.author}"></span> | 发布时间：<span th:text="${post.formattedCreatedAt}"></span></p>
+        <pre th:text="${post.content}"></pre>
+    </div>
+
+    <hr>
+
+    <h4>回复（<span th:text="${#lists.size(post.replies)}"></span> 条）</h4>
+    <div th:if="${#lists.isEmpty(post.replies)}">
+        <p>暂无回复。</p>
+    </div>
+    <div th:unless="${#lists.isEmpty(post.replies)}">
+        <div class="reply" th:each="reply : ${post.replies}">
+            <p><strong th:text="${reply.author}"></strong> | 回复时间：<span th:text="${reply.formattedCreatedAt}"></span></p>
+            <pre th:text="${reply.content}"></pre>
+        </div>
+    </div>
+
+    <hr>
+
+    <h4>添加你的回复</h4>
+    <form th:action="@{/post/{id}(id=${post.id})}" method="post">
+        <div>
+            <textarea name="reply" rows="4" placeholder="输入你的回复" required></textarea>
+        </div>
+        <div>
+            <button type="submit">提交回复</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

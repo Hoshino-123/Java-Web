@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>在线问答留言交互平台</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h2>欢迎，<span th:text="${username}"></span>！</h2>
+    <div class="logout-link">
+        <a th:href="@{/logout}">退出登录</a>
+    </div>
+
+    <h3>发布新留言</h3>
+    <form th:action="@{/home}" method="post">
+        <div>
+            <input type="text" name="title" placeholder="标题" required>
+        </div>
+        <div>
+            <textarea name="content" rows="5" placeholder="详细描述你的问题" required></textarea>
+        </div>
+        <div>
+            <button type="submit">发布留言</button>
+        </div>
+    </form>
+
+    <hr>
+
+    <h3>所有留言（共 <span th:text="${#lists.size(posts)}"></span> 条）</h3>
+    <div th:if="${#lists.isEmpty(posts)}">
+        <p>暂无留言，快来发布第一个留言吧！</p>
+    </div>
+    <div th:unless="${#lists.isEmpty(posts)}">
+        <div class="post-item" th:each="post : ${posts}">
+            <h4>
+                <a th:href="@{/post/{id}(id=${post.id})}" th:text="${post.title}"></a>
+            </h4>
+            <p>作者：<span th:text="${post.author}"></span> | 发布时间：<span th:text="${post.formattedCreatedAt}"></span></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
